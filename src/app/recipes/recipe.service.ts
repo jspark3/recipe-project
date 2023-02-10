@@ -38,6 +38,12 @@ export class RecipeService {
         return this.recipes.slice(); //new array as a copy
     }
 
+    //Will retrun the recipy from the index of the array
+    getRecipe(id: number)
+    {
+        return this.recipes[id];
+    }
+
     addToShoppingList(ingredients: Ingredient[])
     {
         this.shoppinglistService.addMultipulIngredients(ingredients)
