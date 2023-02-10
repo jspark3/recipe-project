@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ingredient } from 'src/app/shared/ingredients.model';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -14,7 +14,7 @@ export class RecipeDetailComponent implements OnInit{
   //Stores the recipe ID
   id: number;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute){
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router){
 
   }
 
@@ -30,6 +30,16 @@ export class RecipeDetailComponent implements OnInit{
         this.recipe = this.recipeService.getRecipe(this.id);
       }
     )
+  }
+
+  //Will navigate us to the edit recipe page when clicked
+  onEditRecipe()
+  {
+    //This is how I will probably navigate using this method
+    this.router.navigate(['edit'], {relativeTo: this.route});
+
+    //This is an Alternative way to navigate
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
   onAddToShoppingList()

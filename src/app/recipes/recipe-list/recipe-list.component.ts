@@ -26,6 +26,9 @@ export class RecipeListComponent implements OnInit{
 
   onNewRecipe()
   {
+    //By adding router we are able to navigate to a location with a method called
+    //Since we are only going to access this link within the recipes component we dont need '/new'
+    //So we iniciate rout thrugh activeatedRoute and will append new to the reletive route that we are on
     this.router.navigate(['new'], {relativeTo: this.route});
   }
   
